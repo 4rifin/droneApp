@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: arifin
+Build-Jdk: 15
+Implementation-Title: DroneApp
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.springjpa
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/DroneApp
+Created-By: Maven Integration for Eclipse
+
