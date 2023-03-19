@@ -1,0 +1,8 @@
+{
+  "id": 10,
+  "serialNumber": "TD01",
+  "model": "ToyotaDrone01",
+  "weight": 10,
+  "batteryCapacity": "100",
+  "state": "idle"
+}
