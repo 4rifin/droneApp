@@ -36,9 +36,9 @@ public class Medication implements Serializable {
 
 	@Column(name = "image")
 	private String image;
-
-	@OneToMany(targetEntity = Packet.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
-	private Set<Packet> packet;
+//
+//	@OneToMany(targetEntity = Packet.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
+//	private Set<Packet> packet;
 	
 	public Long getId() {
 		return id;

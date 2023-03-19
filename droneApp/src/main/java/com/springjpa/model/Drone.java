@@ -1,15 +1,12 @@
 package com.springjpa.model;
 
 import java.io.Serializable;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,8 +35,8 @@ public class Drone implements Serializable {
 	private String state;
 
 
-	@OneToMany(targetEntity = Packet.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
-	private Set<Packet> packet;
+//	@OneToMany(targetEntity = Packet.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
+//	private Set<Packet> packet;
 
     
 	public Long getId() {

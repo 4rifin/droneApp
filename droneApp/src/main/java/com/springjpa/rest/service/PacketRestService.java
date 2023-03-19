@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.springjpa.constant.StatusConstant;
 import com.springjpa.model.Drone;
 import com.springjpa.model.Medication;
@@ -92,7 +93,6 @@ public class PacketRestService {
 	public ResponseEntity<String> packetGetBypacketCode(String packetCode) {
 
 		List <Packet> packetByPacketCode = packetService.findBypacketCode(packetCode);
-		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 
@@ -100,10 +100,11 @@ public class PacketRestService {
 
 		String body = "";
 		Gson gson = new Gson();
-		if (packetByPacketCode == null) {
+		if (packetByPacketCode.isEmpty()) {
 			body = "null";
 		} else {
-			body = gson.toJson(packetByPacketCode);
+			body = gson.toJson(packetByPacketCode.get(0));
+			
 		}
 
 		if (packetByPacketCode == null) {

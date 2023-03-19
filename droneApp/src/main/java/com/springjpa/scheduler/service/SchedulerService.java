@@ -59,13 +59,13 @@ public class SchedulerService {
 	public void updateStateDroneEvery3minute() {
 		List<Packet> packetList = packetService.listPacket();
 		if (packetList != null) {
-			List<Packet> packetStatusLoadedList = packetList.stream()
-					.filter(obj -> StatusConstant.PROGRESS.getLabelKey() == obj.getStatus()
-							&& StateConstant.LOADED.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
+			List<Packet> packetStatusDeliveredingList = packetList.stream()
+					.filter(obj -> StatusConstant.DONE.getLabelKey() == obj.getStatus()
+							&& StateConstant.DELIVERED.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
-			packetStatusLoadedList.stream().forEach(dronePacket -> {
-				dronePacket.getDrone().setState(StateConstant.DELIVERING.getLabelKey());
-				dronePacket.setStatus(StatusConstant.PROGRESS.getLabelKey());
+			packetStatusDeliveredingList.stream().forEach(dronePacket -> {
+				dronePacket.getDrone().setState(StateConstant.IDLE.getLabelKey());
+				dronePacket.getDrone().setBatteryCapacity(dronePacket.getDrone().getBatteryCapacity() - 10);
 				packetService.updateStatusDelivaryPacket(dronePacket);
 			});
 		}
@@ -91,20 +91,20 @@ public class SchedulerService {
 		if (packetList != null) {
 			List<Packet> packetStatusIdleList = packetList.stream()
 					.filter(obj -> StatusConstant.READY.getLabelKey().equals(obj.getStatus())
-							&& StateConstant.IDLE.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
+							&& StateConstant.LOADING.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
 			packetStatusIdleList.stream().forEach(dronePacket -> {
-				dronePacket.getDrone().setState(StateConstant.LOADING.getLabelKey());
+				dronePacket.getDrone().setState(StateConstant.LOADED.getLabelKey());
 				dronePacket.setStatus(StatusConstant.PROGRESS.getLabelKey());
 				packetService.updateStatusDelivaryPacket(dronePacket);
 			});
 			
 			List<Packet> packetStatusLoadingList = packetList.stream()
 					.filter(obj -> StatusConstant.PROGRESS.getLabelKey() == obj.getStatus()
-							&& StateConstant.LOADING.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
+							&& StateConstant.LOADED.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
 			packetStatusLoadingList.stream().forEach(dronePacket -> {
-				dronePacket.getDrone().setState(StateConstant.LOADED.getLabelKey());
+				dronePacket.getDrone().setState(StateConstant.DELIVERING.getLabelKey());
 				dronePacket.setStatus(StatusConstant.PROGRESS.getLabelKey());
 				packetService.updateStatusDelivaryPacket(dronePacket);
 			});

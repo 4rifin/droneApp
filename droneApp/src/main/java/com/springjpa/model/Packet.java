@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,12 +36,12 @@ public class Packet implements Serializable {
 	private String status;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "drone_id", nullable = true)
+	@JoinColumn(name = "drone_id", foreignKey = @ForeignKey(name = "FK_DRONE_ID"))
 	@Fetch(FetchMode.JOIN)
 	private Drone drone;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "medication_id", nullable = true)
+	@JoinColumn(name = "medication_id", foreignKey = @ForeignKey(name = "FK_MEDICATION_ID"))
 	@Fetch(FetchMode.JOIN)
 	private Medication medication;
 

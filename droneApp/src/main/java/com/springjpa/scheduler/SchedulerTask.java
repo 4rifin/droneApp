@@ -29,7 +29,7 @@ public class SchedulerTask {
 	public void updateStateDroneEvery2minute() {
 		try {
 			System.out.println("Scheduller Update Packet twoMinutes........ ");
-			//schedulerService.updateStateDroneEvery2minute();
+			schedulerService.updateStateDroneEvery2minute();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class SchedulerTask {
 	public void updateStateDroneEvery3minute() {
 		try {
 			System.out.println("Scheduller Update Packet threeMinutes........ ");
-			//schedulerService.updateStateDroneEvery3minute();
+			schedulerService.updateStateDroneEvery3minute();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class SchedulerTask {
 	@Scheduled(cron = "${pg.cron.expression.fourminute}")
 	public void updateStateDroneEvery4minute() {
 		try {
-			System.out.println("Scheduller Update Packet fourMinutes........ ");
+			//System.out.println("Scheduller Update Packet fourMinutes........ ");
 			//schedulerService.updateStateDroneEvery4minute();
 
 		} catch (Exception e) {
@@ -64,7 +64,7 @@ public class SchedulerTask {
 	@Scheduled(cron = "${pg.cron.expression.fiveminute}")
 	public void updateStateDroneEvery5minute() {
 		try {
-			System.out.println("Scheduller Update Packet fiveMinutes........ ");
+			//System.out.println("Scheduller Update Packet fiveMinutes........ ");
 			//schedulerService.updateStateDroneEvery5minute();
 
 		} catch (Exception e) {

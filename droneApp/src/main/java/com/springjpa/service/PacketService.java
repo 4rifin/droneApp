@@ -48,7 +48,7 @@ public class PacketService {
 				packetVO.getStatus() != null ? StatusConstant.getLabelFromCode(Integer.parseInt(packetVO.getStatus()))
 						: StatusConstant.PROGRESS.getLabelKey());
 		newPacket.setDrone(packetVO.getDrone());
-		newPacket.getDrone().setState(StateConstant.LOADED.getLabelKey());
+		newPacket.getDrone().setState(StateConstant.LOADING.getLabelKey());
 		newPacket.setMedication(packetVO.getMedication());
 		packageRepository.save(newPacket);
 	}
