@@ -60,7 +60,7 @@ public class SchedulerService {
 		List<Packet> packetList = packetService.listPacket();
 		if (packetList != null) {
 			List<Packet> packetStatusDeliveredingList = packetList.stream()
-					.filter(obj -> StatusConstant.DONE.getLabelKey() == obj.getStatus()
+					.filter(obj -> StatusConstant.DONE.getLabelKey().equals(obj.getStatus())
 							&& StateConstant.DELIVERED.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
 			packetStatusDeliveredingList.stream().forEach(dronePacket -> {
@@ -75,7 +75,7 @@ public class SchedulerService {
 		List<Packet> packetList = packetService.listPacket();
 		if (packetList != null) {
 			List<Packet> packetStatusDeliveringList = packetList.stream()
-					.filter(obj -> StatusConstant.PROGRESS.getLabelKey() == obj.getStatus()
+					.filter(obj -> StatusConstant.PROGRESS.getLabelKey().equals(obj.getStatus())
 							&& StateConstant.DELIVERING.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
 			packetStatusDeliveringList.stream().forEach(dronePacket -> {
@@ -100,7 +100,7 @@ public class SchedulerService {
 			});
 			
 			List<Packet> packetStatusLoadingList = packetList.stream()
-					.filter(obj -> StatusConstant.PROGRESS.getLabelKey() == obj.getStatus()
+					.filter(obj -> StatusConstant.PROGRESS.getLabelKey().equals(obj.getStatus())
 							&& StateConstant.LOADED.getLabelKey().equalsIgnoreCase(obj.getDrone().getState()))
 					.collect(Collectors.toList());
 			packetStatusLoadingList.stream().forEach(dronePacket -> {
