@@ -39,9 +39,9 @@ Constant status in table trans_packet
 additional 
 
 -Scheduler for update state and status in table packet
-1. Scheduller Update Packet everyMinutes 
-2. Scheduller Update Packet twoMinutes
-3. Scheduller Update Packet threeMinutes
+1. Scheduler Update Packet everyMinutes 
+2. Scheduler Update Packet twoMinutes
+3. Scheduler Update Packet threeMinutes
 
 *. note scheduler :
  1. - Collect Packet with status Ready and state Drone Loading and update to Packet with status Progress and state Drone Loaded
